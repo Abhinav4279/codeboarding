@@ -1,39 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Inter:wght@400;700&display=swap');
+
+
+:root {
+  --clr-primary700: #082032;
+  --clr-primary600: #2C394B;
+  --clr-primary500: #334756;
+  --clr-primary400: #728797;
+
+  --clr-secondary: #FF4C29;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+h1,
+h2,
+h3 {
+  font-family: inherit;
+  font-weight: 900;
+  line-height: 1;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 1.3rem;
+}
+
 .App {
-  text-align: center;
-  background-color: #082032;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #082032;
+  background-color: var(--clr-primary700);
   min-height: 100vh;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.container-home {
+  background-color: var(--clr-primary600);
+  display: flex;
+  justify-content: center;
+  width: min(60%, 50rem);
+  height: 25rem;
+  border-radius: 1.5rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.welcome {
+  background-color: var(--clr-primary400);
+  padding: 1rem;
+  border-radius: 1.5rem 0 0 1.5rem;
+  width: max(30%,15rem);
+}
+
+.welcome img {
+  display: block;
+  width: 2.5rem;
+}
+
+.tagline {
+  height: 92%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 1rem;
+}
+
+.enter-panel {
+  margin: auto;
+}
+
+.tagline h2 {
+  font-size: large;
+}
+
+.tagline h2:last-child {
+  font-weight: 400;
 }
