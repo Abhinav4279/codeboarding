@@ -4,7 +4,7 @@ import HomeAction from './components/HomeAction';
 
 function App() {
   return (
-    <div className="App-header"
+    <div className="App"
       style={{ backgroundImage: `url(${background})` }}
     >
       <HomeAction />
