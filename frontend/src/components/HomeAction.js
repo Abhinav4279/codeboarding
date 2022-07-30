@@ -7,6 +7,9 @@ import Join from './Join'
 const HomeAction = () => {
   const [enterCategory, setEnterCategory] = useState('join');
 
+  let join_button_cls =  `tab ${(enterCategory === 'join')? 'home-btn-sel': 'inset-shadow'}`;
+  let create_button_cls = `tab top-right-round ${(enterCategory === 'create')? 'home-btn-sel': 'inset-shadow'}`;
+
   return (
     <div className='container-home'>
       <div className='welcome'>
@@ -18,8 +21,8 @@ const HomeAction = () => {
       </div>
 
       <div className='enter-panel'>
-        <button onClick={() => setEnterCategory('join')}>Join</button>
-        <button onClick={() => setEnterCategory('create')}>Create</button>
+        <button className={join_button_cls} onClick={() => setEnterCategory('join')}>Join</button>
+        <button className={create_button_cls} onClick={() => setEnterCategory('create')}>Create</button>
         {enterCategory === 'join' && <Join />}
         {enterCategory === 'create' && <Create />}
       </div>

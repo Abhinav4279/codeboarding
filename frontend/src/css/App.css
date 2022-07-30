@@ -34,23 +34,31 @@ h3 {
 body {
   font-family: "Inter", sans-serif;
   font-weight: 400;
-  font-size: 1.3rem;
+  font-size: 1.1rem;
 }
 
 .App {
   background-color: var(--clr-primary700);
   min-height: 100vh;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
+  transition: inherit;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .container-home {
   background-color: var(--clr-primary600);
   display: flex;
   justify-content: center;
-  width: min(60%, 50rem);
+  width: max(55%, 25rem);
   height: 25rem;
   border-radius: 1.5rem;
 }
@@ -59,7 +67,7 @@ body {
   background-color: var(--clr-primary400);
   padding: 1rem;
   border-radius: 1.5rem 0 0 1.5rem;
-  width: max(30%,15rem);
+  flex-grow: 1;
 }
 
 .welcome img {
@@ -72,7 +80,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-left: 1rem;
+  margin-left: 18%;
 }
 
 .enter-panel {
@@ -80,9 +88,71 @@ body {
 }
 
 .tagline h2 {
-  font-size: large;
+  font-size: 1.2rem;
 }
 
 .tagline h2:last-child {
   font-weight: 400;
+}
+
+.enter-panel {
+  height: 100%;
+  flex-grow: 3;
+}
+
+.tab {
+  width: 50%;
+  height: 2.5rem;
+  border: none;
+  background-color: var(--clr-primary500);
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.top-right-round {
+  border-radius: 0 1.5rem 0 0;
+}
+
+.home-btn-sel {
+  background-color: var(--clr-primary600);
+  font-weight: 700;
+  transition: all 0.2s;
+}
+
+.inset-shadow {
+  box-shadow: 0.25px 0.25px 3px rgba(0, 0, 0, 0.722) inset;
+}
+
+input {
+  width: min(80%, 18rem);
+  padding: 0.5rem;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+  font-family: inherit;
+  border: none;
+  outline: none;
+}
+
+.enter-contain {
+  height: 85%;
+  flex-direction: column;
+}
+
+.enter-contain button {
+  width: min(80%, 20rem);
+  border-radius: 1.5rem;
+  height: 2.7rem;
+  background-color: var(--clr-secondary);
+  color: inherit;
+  cursor: pointer;
+  font-family: inherit;
+  border: none;
+  margin-top: 1.5rem;
+  box-shadow: 0.25px 0.25px 3px rgba(0, 0, 0, 0.593);
+}
+
+.enter-contain button:hover {
+  background-color: #fb3a13;
 }

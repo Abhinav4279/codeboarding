@@ -1,6 +1,6 @@
 const Create = () => {
   return (
-    <div>
+    <div className="container enter-contain">
       <input type="text" placeholder="Username" />
       <button>{'Enter ->'}</button>
     </div>
