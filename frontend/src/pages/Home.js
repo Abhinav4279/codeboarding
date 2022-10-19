@@ -1,17 +1,19 @@
 import '../css/App.css';
 import { useState } from 'react';
 import logo from '../images/logo.png'
-import Create from './Create'
-import Join from './Join'
+import background from './images/bg.svg';
+import Create from '../components/Create'
+import Join from '../components/Join'
 
-const HomeAction = () => {
+const Home = () => {
   const [enterCategory, setEnterCategory] = useState('join');
 
   let join_button_cls =  `tab ${(enterCategory === 'join')? 'home-btn-sel': 'inset-shadow'}`;
   let create_button_cls = `tab top-right-round ${(enterCategory === 'create')? 'home-btn-sel': 'inset-shadow'}`;
 
   return (
-    <div className='container-home'>
+    <div className='container-home'
+    style={{ backgroundImage: `url(${background})` }}>
       <div className='welcome'>
         <img src={logo} alt='logo'/>
         <div className='tagline'>
@@ -30,4 +32,4 @@ const HomeAction = () => {
   )
 }
 
-export default HomeAction
+export default Home

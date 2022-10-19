@@ -1,14 +1,23 @@
 import './css/App.css';
-import background from './images/bg.svg';
-import HomeAction from './components/HomeAction';
+import Home from './components/Home';
+import {BrowserRouter, Routes, Route} from 'react-router-dom'
+import CodeBoard from './pages/CodeBoard'
 
 function App() {
   return (
-    <div className="App"
-      style={{ backgroundImage: `url(${background})` }}
-    >
-      <HomeAction />
-    </div>
+    <>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />}>
+          </Route>
+
+          <Route path=""
+          element={<CodeBoard />}>
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </>
+
   );
 }
 
