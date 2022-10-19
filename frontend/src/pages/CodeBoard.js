@@ -1,27 +1,29 @@
-import logo from '../images/logo.png'
-import User from '../components/User'
 import { useState } from 'react';
+import Dashboard from '../components/Dashboard';
+import Editor from '../components/Editor';
+import Board from '../components/Board';
+
+const USERS = [
+  {
+    username: "Akshay Bir"
+  },
+  {
+    username: "Ravi Kumar"
+  },
+  {
+    username: "Naveen Narayan"
+  }
+]
 
 const CodeBoard = () => {
-  const [users, setUsers] = useState({});
+  const [users, setUsers] = useState(USERS);
+  let room_code = 1;
 
   return (
     <div className="main-wrap">
-      <div className="dashboard">
-        <div>
-          <img src={logo} alt='logo'/>
-          <button></button>
-        </div>
-        {users.map(() => <User />)};
-      </div>
-
-      <div className="editor">
-
-      </div>
-      
-      <div className="board">
-
-      </div>
+      <Dashboard users={users} room_code={room_code}/>
+      <Editor />
+      <Board />
     </div>
   )
 }

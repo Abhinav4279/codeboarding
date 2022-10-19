@@ -1,22 +1,22 @@
 import './css/App.css';
-import Home from './components/Home';
+import Home from './pages/Home';
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import CodeBoard from './pages/CodeBoard'
 
 function App() {
   return (
-    <>
+    <div className='App'>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />}>
           </Route>
 
-          <Route path=""
+          <Route path="/room/:roomId"
           element={<CodeBoard />}>
           </Route>
         </Routes>
       </BrowserRouter>
-    </>
+    </div>
 
   );
 }

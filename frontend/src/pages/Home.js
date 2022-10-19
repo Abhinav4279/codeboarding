@@ -1,7 +1,7 @@
 import '../css/App.css';
 import { useState } from 'react';
 import logo from '../images/logo.png'
-import background from './images/bg.svg';
+import background from '../images/bg.svg';
 import Create from '../components/Create'
 import Join from '../components/Join'
 
