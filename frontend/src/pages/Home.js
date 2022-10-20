@@ -1,7 +1,6 @@
 import '../css/App.css';
 import { useState } from 'react';
 import logo from '../images/logo.png'
-import background from '../images/bg.svg';
 import Create from '../components/Create'
 import Join from '../components/Join'
 
@@ -12,8 +11,7 @@ const Home = () => {
   let create_button_cls = `tab top-right-round ${(enterCategory === 'create')? 'home-btn-sel': 'inset-shadow'}`;
 
   return (
-    <div className='container-home'
-    style={{ backgroundImage: `url(${background})` }}>
+    <div className='container-home'>
       <div className='welcome'>
         <img src={logo} alt='logo'/>
         <div className='tagline'>
