@@ -9,14 +9,14 @@ const Dashboard = ({ users, room_code }) => {
   const [open, setOpen] = useState(1);
 
   return (
-    <div className={styles.dashboard} style={{width: '15%'}}>
+    <div className={styles.dashboard} style={{width: '18%'}}>
       <div className={styles.nav}>
         <img className={styles.logo} src={logo} alt='logo'/>
         <button className={styles.menu}><img src={menu_close} alt='menu_close' /></button>
       </div>
 
-      {users.map(({username}) => <User username={username}/>)};
-      <h2>Room Code:</h2>
+      {users.map((user) => <User key={user.id} username={user.name}/>)}
+      <p className={styles.room_head}>Room Code:</p>
       <div className={`container ${styles.room_contain}`}>
         <span>{room_code}</span>
         <button><img src={copy} alt='copy'/></button>

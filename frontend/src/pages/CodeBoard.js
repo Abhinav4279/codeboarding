@@ -6,19 +6,22 @@ import styles from '../css/Codeboard.module.css'
 
 const USERS = [
   {
-    username: "Akshay Bir"
+    id: 1,
+    name: "Akshay Bir"
   },
   {
-    username: "Ravi Kumar"
+    id: 2,
+    name: "Naveen Narayan"
   },
   {
-    username: "Naveen Narayan"
+    id: 3,
+    name: "Ravi Kumar"
   }
 ]
 
 const CodeBoard = () => {
   const [users, setUsers] = useState(USERS);
-  let room_code = 1;
+  let room_code = '53245jljljqwe45';
 
   return (
     <div className={styles.main_wrap}>

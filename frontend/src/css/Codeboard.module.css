@@ -12,23 +12,21 @@
   background-color: #2C394B;
 }
 
-.room_contain {
-  justify-content: left;
-}
-
 .nav {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 2.5rem;
 }
 
 .logo {
-  height: 25px;
+  height: 1.3rem;
   margin-top: auto;
 }
 
 .menu {
-  height: 2rem;
-  width: 2rem;
+  cursor: pointer;
+  height: 1.9rem;
+  width: 1.9rem;
   background-color: transparent;
   padding: 0;
   border: none;
@@ -40,15 +38,85 @@
 }
 
 .menu img {
-  height: 2rem;
-  width: 2rem;
+  height: 1.8rem;
+  width: 1.8rem;
   margin: 0rem;
 }
 
-.avatar {
+.avt {
   margin: 0.2rem;
+  margin-bottom: 0.5rem;
 }
 
-.avatar span {
-  margin-left: 0.2rem;
+.bold span {
+  font-weight: 900;
+}
+
+.avt > span {
+  font-family: inherit;
+  font-weight: 400;
+  font-size: 1rem;
+  margin-left: 1rem;
+  word-wrap:break-word;
+}
+
+.room_head {
+  font-family: inherit;
+  font-weight: 900;
+  margin-top: auto;
+  margin-left: 0.5rem
+}
+
+.room_contain {
+  justify-content: left;
+  font-size: 1rem;
+  color: #FF8168;
+  margin-left: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.room_contain span {
+  display: inline-block;
+  width: auto;
+  margin-right: 0.2rem;
+  overflow: hidden;
+  word-wrap: break-word;
+}
+
+.room_contain button {
+  height: 1.2rem;
+  width: 1.2rem;
+  cursor: pointer;
+  background-color: transparent;
+  padding: 0;
+  border: none;
+  border-radius: 4px;
+}
+
+.room_contain button:hover {
+  background-color: #19222f;
+}
+
+.room_contain button:active {
+  background-color: #270903c1;
+}
+
+.room_contain img {
+  height: 1.2rem;
+}
+
+.dashboard > button {
+  border-radius: 1.5rem;
+  height: 2.7rem;
+  background-color: #FF7256;
+  color: inherit;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: bold;
+  border: none;
+  box-shadow: 0.25px 0.25px 3px rgba(0, 0, 0, 0.593);
+}
+
+.dashboard > button:hover {
+  background-color: var(--clr-secondary);
 }
