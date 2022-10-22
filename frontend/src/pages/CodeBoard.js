@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Dashboard from '../components/Dashboard';
-import Editor from '../components/Editor';
+import CodeEditor from '../components/CodeEditor';
 import Board from '../components/Board';
 import styles from '../css/Codeboard.module.css'
 
@@ -26,7 +26,7 @@ const CodeBoard = () => {
   return (
     <div className={styles.main_wrap}>
       <Dashboard users={users} room_code={room_code}/>
-      <Editor />
+      <CodeEditor />
       <Board />
     </div>
   )
