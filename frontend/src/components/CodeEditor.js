@@ -2,13 +2,13 @@ import { useEffect } from 'react'
 import Editor from "@monaco-editor/react";
 
 const CodeEditor = () => {
-  const default_snip = `  #include <iostream>
-  using namespace std;
+  const default_snip = `#include <iostream>
+using namespace std;
 
-  int main() {
-      cout << "Hello World";
-  }
-  `
+int main() {
+    cout << "Hello World";
+}
+`
   return (
     <Editor
       height="100vh"
