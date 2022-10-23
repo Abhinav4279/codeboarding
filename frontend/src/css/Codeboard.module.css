@@ -121,3 +121,20 @@
 .dashboard > button:hover {
   background-color: var(--clr-secondary);
 }
+
+.board {
+  background-color: #2C394B;
+  position: relative;
+}
+
+.pin {
+  position: absolute;
+  background-color: black;
+  border: 0.1rem solid white;    
+  height: 0.5rem;
+  width: 0.5rem;
+  border-radius: 50%;
+  -moz-border-radius:50%;
+  -webkit-border-radius:50%;
+  z-index: 1;
+}

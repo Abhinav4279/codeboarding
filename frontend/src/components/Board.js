@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react';
 import { Stage, Layer, Line, Text, Circle } from 'react-konva';
+import styles from '../css/Codeboard.module.css'
 
 const Board = () => {
   const [tool, setTool] = useState('pen');
@@ -56,7 +57,12 @@ const Board = () => {
   };
 
   return (
-    <div>
+    <div className={styles.board} style={{width: '41%'}}>
+      <div className={styles.pin} style={{ top: '0.6rem', left: '0.6rem'}}></div>
+      <div className={styles.pin} style={{ top: '0.6rem', right: '0.6rem'}}></div>
+      <div className={styles.pin} style={{ bottom: '0.6rem', left: '0.6rem'}}></div>
+      <div className={styles.pin} style={{ bottom: '0.6rem', right: '0.6rem'}}></div>
+
       <Stage
         width={window.innerWidth}
         height={window.innerHeight}
@@ -65,12 +71,11 @@ const Board = () => {
         onMouseup={handleMouseUp}
       >
         <Layer>
-          <Text text="Just start drawing" x={5} y={30} />
           {lines.map((line, i) => (
             <Line
               key={i}
               points={line.points}
-              stroke="#df4b26"
+              stroke="#FF4C29"
               strokeWidth={5}
               tension={0.5}
               lineCap="round"
@@ -86,7 +91,7 @@ const Board = () => {
               x={circle.x}
               y={circle.y}
               radius={circle.r}
-              stroke="#df4b26"
+              stroke="#FF4C29"
               strokeWidth={5}
             />
           ))}
