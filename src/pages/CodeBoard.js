@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Dashboard from '../components/Dashboard';
 import CodeEditor from '../components/CodeEditor';
-// import Board from '../components/Board';
+import Board from '../components/Board';
 import styles from '../css/Codeboard.module.css'
 
 const USERS = [
@@ -27,7 +27,7 @@ const CodeBoard = () => {
     <div className={styles.main_wrap}>
       <Dashboard users={users} room_code={room_code}/>
       <CodeEditor />
-      {/* <Board /> */}
+      <Board />
     </div>
   )
 }
