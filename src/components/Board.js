@@ -43,7 +43,7 @@ const Board = () => {
     } 
     if (tool === "circle") {
       let lastCircle = circles[circles.length - 1];
-      // add point
+      // add circle
       lastCircle.r = getDist(lastCircle.x, lastCircle.y, point.x, point.y);
 
       // replace last
