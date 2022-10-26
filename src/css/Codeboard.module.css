@@ -138,3 +138,31 @@
   -webkit-border-radius:50%;
   z-index: 1;
 }
+
+.toolbar {
+  position: absolute;
+  background-color: #B1B8BD;
+  top: 0;
+  right: 1.5rem;
+  margin: 0.5rem;
+  padding: 0.3rem;
+  border-radius: 4px;
+  z-index: 1;
+}
+
+.tools {
+  font-family: inherit;
+  margin-right: 0.3rem;
+  border-radius: 4px;
+  padding: 0.1rem;
+  border: none;
+  outline: none;
+}
+
+.clear {
+  font-family: inherit;
+  border: none;
+  border-radius: 4px;
+  padding-top: 0.1rem;
+  padding-bottom: 0.1rem;
+}
