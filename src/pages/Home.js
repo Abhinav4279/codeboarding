@@ -6,6 +6,8 @@ import Join from '../components/Join'
 
 const Home = () => {
   const [enterCategory, setEnterCategory] = useState('join');
+  const [username, setUsername] = useState('');
+  const [roomId, setRoomId] = useState('');
 
   let join_button_cls =  `tab ${(enterCategory === 'join')? 'home-btn-sel': 'inset-shadow'}`;
   let create_button_cls = `tab top-right-round ${(enterCategory === 'create')? 'home-btn-sel': 'inset-shadow'}`;
@@ -23,8 +25,9 @@ const Home = () => {
       <div className='enter-panel'>
         <button className={join_button_cls} onClick={() => setEnterCategory('join')}>Join</button>
         <button className={create_button_cls} onClick={() => setEnterCategory('create')}>Create</button>
-        {enterCategory === 'join' && <Join />}
-        {enterCategory === 'create' && <Create />}
+        {enterCategory === 'join' && <Join username={username} setUsername={setUsername}
+         roomId={roomId} setRoomId={setRoomId}/>}
+        {enterCategory === 'create' && <Create username={username} setUsername={setUsername}/>}
       </div>
     </div>
   )
