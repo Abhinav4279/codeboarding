@@ -125,6 +125,7 @@
 .board {
   background-color: #2C394B;
   position: relative;
+  cursor: crosshair;
 }
 
 .pin {
