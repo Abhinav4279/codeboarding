@@ -16,7 +16,6 @@ const CodeBoard = () => {
 
   const [users, setUsers] = useState([]);
 
-  const effectRan = useRef(false)
   useEffect(() => {
     const init = async () => {
       socketRef.current = await initSocket();
@@ -53,15 +52,12 @@ const CodeBoard = () => {
       })
     }
 
-    if(effectRan.current === false)
-      init();
+    init();
 
     return () => {
       socketRef.current?.off(ACTIONS.JOINED)
       socketRef.current?.off(ACTIONS.DISCONNECTED)
       socketRef.current?.disconnect();
-      
-      effectRan.current = true
     }
   }, []);
 
