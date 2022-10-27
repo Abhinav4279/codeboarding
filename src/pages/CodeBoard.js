@@ -29,12 +29,13 @@ const CodeBoard = () => {
         navigateTo('/');
       }
 
+      //JOIN emitter
       socketRef.current.emit(ACTIONS.JOIN, {
         roomId,
         username: location.state?.username,
       });
 
-      //JOINED event
+      //JOINED handler
       socketRef.current.on(ACTIONS.JOINED, 
         ({ clients, username, socketId }) => {
           if(username !== location.state?.username) {
@@ -42,12 +43,26 @@ const CodeBoard = () => {
           }
           setUsers(clients)
       })
+
+      //DISCONNECTED handler
+      socketRef.current.on(ACTIONS.DISCONNECTED, ({socketId, username}) => {
+        toast.success(`${username} left.`)
+        setUsers((prev) => {
+          return prev.filter((user) => user.socketId !== socketId)
+        })
+      })
     }
 
     if(effectRan.current === false)
       init();
 
-    return () => effectRan.current = true
+    return () => {
+      socketRef.current?.off(ACTIONS.JOINED)
+      socketRef.current?.off(ACTIONS.DISCONNECTED)
+      socketRef.current?.disconnect();
+      
+      effectRan.current = true
+    }
   }, []);
 
   if (!location.state)
