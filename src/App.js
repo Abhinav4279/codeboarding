@@ -3,11 +3,15 @@ import Home from './pages/Home';
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import CodeBoard from './pages/CodeBoard'
 import background from './images/bg.svg';
+import { Toaster } from 'react-hot-toast';
 
 function App() {
   return (
     <div className='App'
     style={{ backgroundImage: `url(${background})` }}>
+      <div>
+        <Toaster position='top-right'/>
+      </div>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />}>
