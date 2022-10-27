@@ -15,7 +15,7 @@ const Dashboard = ({ users, room_code }) => {
         <button className={styles.menu}><img src={menu_close} alt='menu_close' /></button>
       </div>
 
-      {users.map((user) => <User key={user.id} username={user.name}/>)}
+      {users.map((user) => <User key={user.socketId} username={user.username}/>)}
       <p className={styles.room_head}>Room Code:</p>
       <div className={`container ${styles.room_contain}`}>
         <span>{room_code}</span>
