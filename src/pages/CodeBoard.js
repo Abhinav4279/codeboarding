@@ -67,7 +67,7 @@ const CodeBoard = () => {
   return (
     <div className={styles.main_wrap}>
       <Dashboard users={users} room_code={roomId} />
-      <CodeEditor />
+      <CodeEditor socketRef={socketRef} roomId={roomId}/>
       <Board />
     </div>
   )
