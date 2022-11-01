@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Dashboard from '../components/Dashboard';
 import CodeEditor from '../components/CodeEditor';
 import Board from '../components/Board';
@@ -8,8 +8,9 @@ import { Navigate, useLocation, useNavigate, useParams } from 'react-router-dom'
 import ACTIONS from '../Actions';
 import toast from 'react-hot-toast';
 
+const socket = initSocket();
+
 const CodeBoard = () => {
-  const socketRef = useRef(null);
   const location = useLocation();
   const { roomId } = useParams();
   const navigateTo = useNavigate();
@@ -17,10 +18,10 @@ const CodeBoard = () => {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    const init = async () => {
-      socketRef.current = await initSocket();
-      socketRef.current.on('connect_error', (err) => handleErrors(err))
-      socketRef.current.on('connect_failed', (err) => handleErrors(err))
+    const init = () => {
+      socket.connect();
+      socket.on('connect_error', (err) => handleErrors(err))
+      socket.on('connect_failed', (err) => handleErrors(err))
 
       function handleErrors(e) {
         console.log('socket connection error', e);
@@ -29,22 +30,22 @@ const CodeBoard = () => {
       }
 
       //JOIN emitter
-      socketRef.current.emit(ACTIONS.JOIN, {
+      socket.emit(ACTIONS.JOIN, {
         roomId,
         username: location.state?.username,
       });
 
       //JOINED handler
-      socketRef.current.on(ACTIONS.JOINED, 
+      socket.on(ACTIONS.JOINED,
         ({ clients, username, socketId }) => {
-          if(username !== location.state?.username) {
+          if (username !== location.state?.username) {
             toast.success(`${username} joined.`)
           }
           setUsers(clients)
-      })
+        })
 
       //DISCONNECTED handler
-      socketRef.current.on(ACTIONS.DISCONNECTED, ({socketId, username}) => {
+      socket.on(ACTIONS.DISCONNECTED, ({ socketId, username }) => {
         toast.success(`${username} left.`)
         setUsers((prev) => {
           return prev.filter((user) => user.socketId !== socketId)
@@ -52,25 +53,27 @@ const CodeBoard = () => {
       })
     }
 
-    init();
+    console.log('parent', socket)
+    if (socket !== null || socket !== undefined)
+      init();
 
     return () => {
-      socketRef.current?.off(ACTIONS.JOINED)
-      socketRef.current?.off(ACTIONS.DISCONNECTED)
-      socketRef.current?.disconnect();
+      socket?.off(ACTIONS.JOINED)
+      socket?.off(ACTIONS.DISCONNECTED)
+      socket?.disconnect();
     }
   }, []);
 
-  if (!location.state)
-    return <Navigate to='/' />
+    if (!location.state)
+      return <Navigate to='/' />
 
-  return (
-    <div className={styles.main_wrap}>
-      <Dashboard users={users} room_code={roomId} />
-      <CodeEditor socketRef={socketRef} roomId={roomId}/>
-      <Board />
-    </div>
-  )
-}
+    return (
+      <div className={styles.main_wrap}>
+        <Dashboard users={users} room_code={roomId} />
+        <CodeEditor socket={socket} roomId={roomId} />
+        <Board />
+      </div>
+    )
+  }
 
-export default CodeBoard
+  export default CodeBoard

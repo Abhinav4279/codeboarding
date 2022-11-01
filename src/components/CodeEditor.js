@@ -1,10 +1,9 @@
-import { useEffect, useRef, useState } from 'react'
+import { useRef } from 'react'
 import Editor from "@monaco-editor/react";
 import ACTIONS from '../Actions';
 
-const CodeEditor = ({ socketRef, roomId }) => {
+const CodeEditor = ({ socket, roomId }) => {
   const editorRef = useRef(null);
-  const [isUserInput, setIsUserInput] = useState(1);
 
   const default_snip =
     `#include <iostream>
@@ -15,33 +14,25 @@ int main() {
 }
 `
 
-  useEffect(() => {
-    if(socketRef.current) {
-      socketRef.current.on(ACTIONS.CODE_CHANGE, ({code}) => {
-        if(code !== null) {
-          setIsUserInput(0);
-          editorRef.current.setValue(code);
-        }
-        console.log(code);
-      })
-    }
-  }, [socketRef.current]);
-
   function handleEditorDidMount(editor, monaco) {
     editorRef.current = editor;
+
+    if(socket && editorRef.current) {
+      socket.on(ACTIONS.CODE_CHANGE, ({code}) => {
+        if(code !== null && code !== undefined) {
+          editorRef.current.setValue(code);
+        }
+      })
+    }
   }
 
-  function handleEditorChange() {
-    // console.log(editorRef.current.getValue());
-    if(isUserInput === 0) {
-      setIsUserInput(1);
+  const handleEditorChange = (value, event) => {
+    if(event.isFlush === true || socket === null || socket === undefined)
       return;
-    }
 
-    const code = editorRef.current.getValue();
-    socketRef.current.emit(ACTIONS.CODE_CHANGE, {
+    socket.emit(ACTIONS.CODE_CHANGE, {
       roomId,
-      code,
+      value,
     })
   }
 
