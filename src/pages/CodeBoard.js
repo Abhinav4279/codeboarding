@@ -53,7 +53,6 @@ const CodeBoard = () => {
       })
     }
 
-    console.log('parent', socket)
     if (socket !== null || socket !== undefined)
       init();
 
@@ -71,7 +70,7 @@ const CodeBoard = () => {
       <div className={styles.main_wrap}>
         <Dashboard users={users} room_code={roomId} />
         <CodeEditor socket={socket} roomId={roomId} />
-        <Board />
+        <Board socket={socket} roomId={roomId}/>
       </div>
     )
   }
