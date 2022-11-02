@@ -1,10 +1,10 @@
 import {io} from 'socket.io-client'
 
-export const initSocket = async () => {
+export const initSocket = () => {
   const options = {
     'force new connection': true,
-    reconnectionAttempt: 'Infinity',
-    timeout: 1000,
+    reconnectionAttempt: 1,
+    timeout: 10000,
     transports: ['websocket'],
   };
 

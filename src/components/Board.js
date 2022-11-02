@@ -1,11 +1,22 @@
-import { useRef, useState } from 'react';
-import { Stage, Layer, Line, Text } from 'react-konva';
+import { useEffect, useRef, useState } from 'react';
+import { Stage, Layer, Line } from 'react-konva';
+import ACTIONS from '../Actions';
 import styles from '../css/Codeboard.module.css'
 
-const Board = () => {
+const Board = ({ socket, roomId }) => {
   const [tool, setTool] = useState('pen');
   const [lines, setLines] = useState([]);
   const isDrawing = useRef(false);
+
+  useEffect(() => {
+    if(socket) {
+      socket.on(ACTIONS.BOARD_CHANGE, ({slines}) => {
+        if(slines !== undefined) {
+          setLines(slines);
+        }
+      })
+    }
+  }, [])
 
   const handleMouseDown = (e) => {
     isDrawing.current = true;
@@ -33,6 +44,13 @@ const Board = () => {
 
   const handleMouseUp = () => {
     isDrawing.current = false;
+    if(socket === null || socket === undefined)
+      return;
+
+    socket.emit(ACTIONS.BOARD_CHANGE, {
+      roomId,
+      lines,
+    })
   };
 
   const cleanBoard = () => {
@@ -66,6 +84,7 @@ const Board = () => {
         onMouseDown={handleMouseDown}
         onMousemove={handleMouseMove}
         onMouseup={handleMouseUp}
+        className={styles.board}
       >
         <Layer>
           {lines.map((line, i) => (
