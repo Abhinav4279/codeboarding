@@ -11,7 +11,7 @@ const Board = ({ socket, roomId }) => {
   useEffect(() => {
     if(socket) {
       socket.on(ACTIONS.BOARD_CHANGE, ({slines}) => {
-        if(slines !== null && slines !== undefined) {
+        if(slines !== undefined) {
           setLines(slines);
         }
       })
@@ -84,6 +84,7 @@ const Board = ({ socket, roomId }) => {
         onMouseDown={handleMouseDown}
         onMousemove={handleMouseMove}
         onMouseup={handleMouseUp}
+        className={styles.board}
       >
         <Layer>
           {lines.map((line, i) => (
