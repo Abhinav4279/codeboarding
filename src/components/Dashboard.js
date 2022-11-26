@@ -14,6 +14,11 @@ const Dashboard = ({ users, room_code }) => {
     window.location.reload();
   }
 
+  const copyRoomCode = (code) => {
+    navigator.clipboard.writeText(code)
+    alert("Room code copied to clipboard!")
+  }
+
   return (
     <div className={styles.dashboard} style={{width: '18%'}}>
       <div className={styles.nav}>
@@ -25,7 +30,7 @@ const Dashboard = ({ users, room_code }) => {
       <p className={styles.room_head}>Room Code:</p>
       <div className={`container ${styles.room_contain}`}>
         <span>{room_code}</span>
-        <button><img src={copy} alt='copy'/></button>
+        <button onClick={() => copyRoomCode(room_code)}><img src={copy} alt='copy'/></button>
       </div>
       <button onClick={handleExit}>{`<- Exit`}</button>
     </div>
